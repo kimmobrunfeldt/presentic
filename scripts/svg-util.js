@@ -1,4 +1,6 @@
+const parseSvgTransform = require('svg-transform-parser').parse;
 const {SVG_NS} = require('./constants');
+const mathUtil = require('./math-util');
 
 function injectRootGroup(snap) {
   const g = document.createElementNS(SVG_NS, 'g');
@@ -23,8 +25,41 @@ function drawRect(svg, x, y, width, height) {
   return rect;
 }
 
+function getFinalBBox(svgElem) {
+  const box = svgElem.getBBox();
+  const svgElemParts = mathUtil.decomposeMatrix(svgElem.getCTM());
+
+  const transforms = [];
+  let current = svgElem;
+  while (current && current.tagName !== 'svg') {
+    const transform = current.getAttribute('transform');
+    if (transform) {
+      transforms.push(parseSvgTransform(transform));
+    }
+
+    current = current.parentNode;
+  }
+
+  return _.reduce(transforms, (memo, transform) => {
+    console.log('translate x:', transform.translate.tx, 'translate y', transform.translate.ty)
+    return {
+      x: memo.x + transform.translate.tx,
+      y: memo.y + transform.translate.ty,
+      width: memo.width,
+      height: memo.height,
+      rotation: memo.rotation
+    };
+  }, {
+    x: box.x,
+    y: box.y,
+    width: box.width,
+    height: box.height,
+    rotation: svgElemParts.rotation
+  });
+}
 
 module.exports = {
   injectRootGroup,
-  drawRect
+  drawRect,
+  getFinalBBox,
 };

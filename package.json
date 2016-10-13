@@ -29,7 +29,8 @@
     "lunar.js": "github:toddmotto/lunar",
     "mousetrap": "^1.6.0",
     "shifty": "^1.5.2",
-    "snapsvg": "github:adobe-webplatform/Snap.svg"
+    "snapsvg": "github:adobe-webplatform/Snap.svg",
+    "svg-transform-parser": "0.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",

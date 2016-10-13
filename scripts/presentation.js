@@ -29,16 +29,17 @@ function initPresentation(svgDocument, opts) {
   const slidesContainer = svgDocument.getElementById('Slides');
   slidesContainer.setAttribute('class', 'presentation-slides-group');
   const slideElems = _.map(slidesContainer.children, child => {
+    return child;
+    /*
     if (child.tagName === 'use') {
       const realElemId = child.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
       return svgDocument.querySelector(realElemId);
     }
 
     return child;
+    */
   });
 
-
-  console.log('slideElems', slideElems)
   _.forEach(slideElems, (e, index) => {
     e.style.touchAction = 'none';
 
@@ -48,7 +49,7 @@ function initPresentation(svgDocument, opts) {
     });
   });
 
-  const presentation = _.map(slideElems, e => mathUtil.getFinalBBox(e));
+  const presentation = _.map(slideElems, e => svgUtil.getFinalBBox(e));
   const rotations = _.map(presentation, 'rotation');
   _.forEach(mathUtil.normalizeRotations(rotations), (rotation, i) => {
     // Normalize rotations to make the presentation flow better,

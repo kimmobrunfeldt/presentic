@@ -54,52 +54,9 @@ function rotationDiff(x, y) {
   return Math.atan2(Math.sin(b - a), Math.cos(b - a)) * (180 / Math.PI);
 }
 
-function getFinalBBox(svgElem) {
-  const box = svgElem.getBBox();
-  const svgElemParts = decomposeMatrix(svgElem.getCTM());
-
-  return {
-    x: box.x,
-    y: box.y,
-    width: box.width,
-    height: box.height,
-    rotation: svgElemParts.rotation
-  };
-  /*
-  const matrices = [];
-  let current = svgElem;
-  while (current && current.tagName !== 'svg') {
-    matrices.push(current.getCTM());
-    current = current.parentNode;
-  }
-
-  const decomposedMatrices = _.map(matrices, m => decomposeMatrix(m));
-  const box = svgElem.getBBox();
-  const svgElemParts = decomposeMatrix(svgElem.getCTM());
-  console.log(decomposedMatrices);
-  return _.reduce(decomposedMatrices, (memo, parts) => {
-    //console.log(parts)
-    return {
-      x: memo.x + parts.translateX,
-      y: memo.y + parts.translateY,
-      width: memo.width,
-      height: memo.height,
-      rotation: memo.rotation
-    };
-  }, {
-    x: box.x,
-    y: box.y,
-    width: box.width,
-    height: box.height,
-    rotation: svgElemParts.rotation
-  });
-  */
-}
-
 module.exports = {
   decomposeMatrix,
   deltaTransformPoint,
   normalizeRotations,
   rotationDiff,
-  getFinalBBox
 };
