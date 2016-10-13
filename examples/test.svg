@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 6000 6000" style="enable-background:new 0 0 6000 6000;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#73EFE0;}
+	.st1{font-family:'Raleway-Black';}
+	.st2{font-size:1200px;}
+	.st3{font-size:220px;}
+	.st4{fill:none;stroke:#73EFE0;stroke-width:65;stroke-miterlimit:10;}
+	.st5{fill:none;stroke:#73EFE0;stroke-width:7;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1">
+	<text transform="matrix(1 0 0 1 1461.8607 3317.4453)" class="st0 st1 st2">Hello</text>
+	<text transform="matrix(1 0 0 1 2620.3965 489.2545)" class="st0 st1 st3">Slide 1</text>
+	<text transform="matrix(0.7046 0.7096 -0.7096 0.7046 4634.5952 1036.2506)" class="st0 st1 st3">Slide 2</text>
+	<text transform="matrix(-3.602418e-03 1 -1 -3.602418e-03 5461.7563 2607.7148)" class="st0 st1 st3">Slide 3</text>
+	<circle class="st4" cx="2999.9" cy="2947.6" r="2301.2"/>
+</g>
+<g id="Slides">
+	<rect x="229.3" y="101.6" class="st5" width="5591.4" height="5476.1"/>
+	<rect x="2204.4" y="101.6" class="st5" width="1591" height="655.2"/>
+	
+		<rect x="4175.7" y="909.8" transform="matrix(0.6749 0.7379 -0.7379 0.6749 2529.3674 -3266.0913)" class="st5" width="1591" height="655.2"/>
+	
+		<rect x="4675.8" y="2620" transform="matrix(-2.752015e-02 0.9996 -0.9996 -2.752015e-02 8568.4277 -2440.4827)" class="st5" width="1591" height="655.2"/>
+</g>
+</svg>

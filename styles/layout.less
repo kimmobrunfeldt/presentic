@@ -1,0 +1,17 @@
+html, body, .viewport {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+}
+
+.viewport > * {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.viewport {
+  // Enable to get keyboard events through
+  pointer-events: none;
+}

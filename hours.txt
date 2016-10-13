@@ -1,0 +1,5 @@
+2h Initial testing and implementing
+pe 4h
+la 12-17 17-20 00-01:30
+su 4h impress
+mon 4h impress
