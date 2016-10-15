@@ -28,17 +28,8 @@ function initPresentation(svgDocument, opts) {
 
   const slidesContainer = svgDocument.getElementById('Slides');
   slidesContainer.setAttribute('class', 'presentation-slides-group');
-  const slideElems = _.map(slidesContainer.children, child => {
-    return child;
-    /*
-    if (child.tagName === 'use') {
-      const realElemId = child.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
-      return svgDocument.querySelector(realElemId);
-    }
-
-    return child;
-    */
-  });
+  // Convert children to regular array and reverse it
+  const slideElems = _.reverse(_.map(slidesContainer.children, i => i));
 
   _.forEach(slideElems, (e, index) => {
     e.style.touchAction = 'none';

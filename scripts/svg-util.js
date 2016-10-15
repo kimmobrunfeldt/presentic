@@ -1,4 +1,5 @@
 const parseSvgTransform = require('svg-transform-parser').parse;
+const Snap = require('snapsvg');
 const {SVG_NS} = require('./constants');
 const mathUtil = require('./math-util');
 
@@ -29,32 +30,31 @@ function getFinalBBox(svgElem) {
   const box = svgElem.getBBox();
   const svgElemParts = mathUtil.decomposeMatrix(svgElem.getCTM());
 
-  const transforms = [];
+  const decomposeMatrices = [];
   let current = svgElem;
   while (current && current.tagName !== 'svg') {
-    const transform = current.getAttribute('transform');
-    if (transform) {
-      transforms.push(parseSvgTransform(transform));
-    }
+    _.forEach(current.transform.baseVal, svgTransform => {
+      const decomposed = mathUtil.decomposeMatrix(svgTransform.matrix);
+      decomposeMatrices.push(decomposed);
+    });
 
     current = current.parentNode;
   }
 
-  return _.reduce(transforms, (memo, transform) => {
-    console.log('translate x:', transform.translate.tx, 'translate y', transform.translate.ty)
+  return _.reduce(decomposeMatrices, (memo, parts, i) => {
     return {
-      x: memo.x + transform.translate.tx,
-      y: memo.y + transform.translate.ty,
+      x: memo.x + parts.translateX,
+      y: memo.y + parts.translateY,
       width: memo.width,
       height: memo.height,
-      rotation: memo.rotation
+      rotation: memo.rotation + parts.rotation
     };
   }, {
     x: box.x,
     y: box.y,
     width: box.width,
     height: box.height,
-    rotation: svgElemParts.rotation
+    rotation: 0,
   });
 }
 
