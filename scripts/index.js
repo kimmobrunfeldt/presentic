@@ -1,16 +1,19 @@
 const _ = require('lodash');
+const axios = require('axios');
 const util = require('./util');
 const initPresentation = require('./presentation');
 
 function main() {
-  const obj = document.querySelector('object');
-  initPresentation(obj.contentDocument);
-  /*
-  obj.addEventListener('load', () => {
-    console.log(obj.contentDocument)
-    initPresentation(obj.contentDocument);
-  });
-  */
+  // Optionally the request above could also be done as
+  axios.get('examples/presentic-intro.svg')
+    .then(response => {
+      const viewport = document.querySelector('#viewport');
+      viewport.innerHTML = response.data;
+      initPresentation(document, viewport.querySelector('svg'));
+    })
+    .catch(err => {
+      throw err;
+    });
 }
 
 main();
