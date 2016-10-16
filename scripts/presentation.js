@@ -44,17 +44,17 @@ function initPresentation(svgDocument, svgElement, opts) {
       element: elem,
     };
   });
-  const rotations = _.map(presentation, 'rotation');
+  const rotations = _.map(presentation, i => i.viewportPosition.rotation);
   _.forEach(mathUtil.normalizeRotations(rotations), (rotation, i) => {
     // Normalize rotations to make the presentation flow better,
     // and also we need to reverse the rotation to make the viewport
     // rotate correctly
-    presentation[i].rotation = -rotation;
+    presentation[i].viewportPosition.rotation = -rotation;
   });
 
   const state = {
     step: 0,
-    viewport: svgViewport(svgDocument, opts)
+    viewport: svgViewport(svgDocument, svgElement, opts)
   };
 
   function getSlideElementFromContainer(svgDoc, container) {

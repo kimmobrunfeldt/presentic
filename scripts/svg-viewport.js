@@ -16,7 +16,7 @@ const MANDATORY_VIEW_KEYS = [
 // Provides easy way to animate movement of SVG viewport, including the
 // SVG canvas rotation.
 // Injects a root `g` element to `svgDocument` for rotation purposes
-function viewport(svgDocument, opts) {
+function viewport(svgDocument, svgElement, opts) {
   opts = _.merge({
     duration: 800,
     easing: 'easeInOutCubic',
@@ -25,16 +25,15 @@ function viewport(svgDocument, opts) {
     rootGroupClassName: 'presentation-root-group'
   }, opts);
 
-  const svgElement = svgDocument.querySelector('svg');
   const snap = Snap(svgElement);
   const rootGroup = svgUtil.injectRootGroup(snap);
 
   if (opts.svgClassNameOnMousedown) {
-    document.addEventListener('pointerdown', () => {
+    svgDocument.addEventListener('pointerdown', () => {
       lunar.addClass(svgElement, opts.svgClassNameOnMousedown);
     });
 
-    document.addEventListener('pointerup', () => {
+    svgDocument.addEventListener('pointerup', () => {
       lunar.removeClass(svgElement, opts.svgClassNameOnMousedown);
     });
   }
