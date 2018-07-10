@@ -933,11 +933,50 @@ a {
   border-bottom: dotted 1px rgba(160, 160, 160, 0.65);
   text-decoration: none;
   color: #555;
-  -webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
   transition: color 0.2s ease, border-bottom-color 0.2s ease;
 }
 a:hover {
   text-decoration: none;
   border-bottom-color: transparent;
   color: #ED6A5A;
+}
+.content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.intro {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  padding-bottom: 80px;
+  text-align: center;
+}
+.intro h1 {
+  margin-bottom: 10px;
+  padding-left: 6px;
+}
+.intro p {
+  font-size: 1.8rem;
+}
+.intro label {
+  text-align: center;
+}
+.intro .button {
+  margin-top: 60px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  position: relative;
+  left: -3px;
+}
+.mousedown .presentation-root-group > * {
+  fill: rgba(102, 215, 209, 0.8);
 }
