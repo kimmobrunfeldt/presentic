@@ -1,5 +1,6 @@
 const parseSvgTransform = require('svg-transform-parser').parse;
 const Snap = require('snapsvg');
+const _ = require('lodash');
 const {SVG_NS} = require('./constants');
 const mathUtil = require('./math-util');
 

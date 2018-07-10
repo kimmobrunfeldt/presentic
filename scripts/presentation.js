@@ -34,8 +34,6 @@ function initPresentation(svgDocument, svgElement, opts) {
   // Convert children to regular array and reverse it
   const slideContainers = _.reverse(_.map(slidesContainer.children, i => i));
 
-  _.forEach(slideContainers, e => e.setAttribute('class', 'hidden'));
-
   const presentation = _.map(slideContainers, container => {
     const elem = getSlideElementFromContainer(svgDocument, container);
     return {
@@ -122,6 +120,7 @@ function initPresentation(svgDocument, svgElement, opts) {
     Mousetrap.bind('left', () => previous());
   }
 
+  _.forEach(slideContainers, e => e.setAttribute('class', 'hidden'));
   initKeyEvents();
   animateStep(state.step);
 }

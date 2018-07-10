@@ -5,7 +5,7 @@ const initPresentation = require('./presentation');
 
 function main() {
   // Optionally the request above could also be done as
-  axios.get('examples/presentic-intro.svg')
+  axios.get('examples/test.svg')
     .then(response => {
       const viewport = document.querySelector('#viewport');
       viewport.innerHTML = response.data;
