@@ -47,7 +47,7 @@ function main() {
   const el = document.querySelector('#file-input')
   el.addEventListener('change', setupPresentationFromFile, false);
 
-  const linkEl = document.querySelector('#try-demo');
+  const linkEl = document.querySelector('#see-intro');
   linkEl.addEventListener('click', setupDemo);
 }
 
