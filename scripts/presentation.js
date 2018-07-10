@@ -87,8 +87,8 @@ function initPresentation(svgDocument, svgElement, opts) {
     const nextStep = presentation[nextStepIndex];
 
     state.viewport.animateTo(nextStep.viewportPosition);
-    currentStep.container.setAttribute('class', 'hidden');
-    nextStep.container.setAttribute('class', '');
+    // currentStep.container.setAttribute('class', 'hidden');
+    // nextStep.container.setAttribute('class', '');
 
     state.step = nextStepIndex;
   }

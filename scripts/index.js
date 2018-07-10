@@ -3,21 +3,40 @@ const axios = require('axios');
 const util = require('./util');
 const initPresentation = require('./presentation');
 
-function setupPresentation(e) {
+function removeContent() {
+  const body = document.querySelector('body');
+  const contentEl = document.querySelector('#content');
+  body.removeChild(contentEl);
+}
+
+function startPresentation(svgAsText) {
+  removeContent();
+
+  const viewport = document.querySelector('#viewport');
+  viewport.innerHTML = svgAsText;
+  initPresentation(document, viewport.querySelector('svg'));
+}
+
+function setupPresentationFromFile(e) {
   const file = e.target.files[0]
 
   const reader = new FileReader();
-
   reader.onload = (e) => {
-    const body = document.querySelector('body');
-    const contentEl = document.querySelector('#content');
-    body.removeChild(contentEl);
-
-    const viewport = document.querySelector('#viewport');
-    viewport.innerHTML = reader.result;
-    initPresentation(document, viewport.querySelector('svg'));
+    startPresentation(reader.result);
   }
   reader.readAsText(file);
+}
+
+function setupDemo() {
+  // Optionally the request above could also be done as
+  axios.get('examples/presentic-intro.svg')
+  .then(response => {
+    startPresentation(response.data);
+  })
+  .catch(err => {
+    alert(err.message)
+    throw err;
+  });
 }
 
 function main() {
@@ -26,7 +45,10 @@ function main() {
   }
 
   const el = document.querySelector('#file-input')
-  el.addEventListener('change', setupPresentation, false);
+  el.addEventListener('change', setupPresentationFromFile, false);
+
+  const linkEl = document.querySelector('#try-demo');
+  linkEl.addEventListener('click', setupDemo);
 }
 
 main();
