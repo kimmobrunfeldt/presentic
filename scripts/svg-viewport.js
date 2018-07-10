@@ -21,7 +21,7 @@ function viewport(svgDocument, svgElement, opts) {
     duration: 800,
     easing: 'easeInOutCubic',
     injectCss: null,
-    svgClassNameOnMousedown: 'mousedown',
+    svgClassNameOnMousedown: null,
     rootGroupClassName: 'presentation-root-group'
   }, opts);
 

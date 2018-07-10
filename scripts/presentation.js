@@ -13,9 +13,11 @@ const SVG_DOCUMENT_CSS = `.presentation-slides-group > * {
   transition: all 0.3s ease;
 }
 
+/* Disabled
 .mousedown .presentation-slides-group > * {
   fill: rgba(102, 215, 209, 0.3);
 }
+*/
 
 .hidden {
   opacity: 0;
@@ -112,6 +114,7 @@ function initPresentation(svgDocument, svgElement, opts) {
   function initKeyEvents() {
     attachFastClick(document.body);
 
+    document.addEventListener('pointerdown', () => next());
     hammer.on('swipeleft', () => next());
     hammer.on('swiperight', () => previous());
 
