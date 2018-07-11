@@ -27,9 +27,9 @@ function setupPresentationFromFile(e) {
   reader.readAsText(file);
 }
 
-function setupDemo() {
+function setupDemo(url) {
   // Optionally the request above could also be done as
-  axios.get('examples/presentic-intro.svg')
+  axios.get(url)
   .then(response => {
     startPresentation(response.data);
   })
@@ -48,7 +48,12 @@ function main() {
   el.addEventListener('change', setupPresentationFromFile, false);
 
   const linkEl = document.querySelector('#see-intro');
-  linkEl.addEventListener('click', setupDemo);
+  linkEl.addEventListener('click', () => setupDemo('examples/presentic-intro.svg'));
+
+  const url = util.getQueryParameterByName('url');
+  if (url) {
+    setupDemo(url);
+  }
 }
 
 main();

@@ -51,10 +51,16 @@ function setStorageSafe(key, val) {
   return success;
 }
 
+function getQueryParameterByName(name) {
+  const match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
 module.exports = {
   removeClass,
   addClass,
   hasClass,
   setStorageSafe,
-  getStorageSafe
+  getStorageSafe,
+  getQueryParameterByName,
 };
