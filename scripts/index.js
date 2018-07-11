@@ -48,7 +48,10 @@ function main() {
   el.addEventListener('change', setupPresentationFromFile, false);
 
   const linkEl = document.querySelector('#see-intro');
-  linkEl.addEventListener('click', () => setupDemo('examples/presentic-intro.svg'));
+  linkEl.addEventListener('click', () => {
+    window.location.search = '?url=examples/presentic-intro.svg';
+    setupDemo('examples/presentic-intro.svg')
+  });
 
   const url = util.getQueryParameterByName('url');
   if (url) {
