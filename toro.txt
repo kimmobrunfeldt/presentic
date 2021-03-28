@@ -1,3 +1,0 @@
-* root g and transform?
-* viewBox plus transform?
-* Testaa miten illustrator ja sketch exportoi
